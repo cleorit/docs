@@ -1,0 +1,373 @@
+{
+  "ModelName": "Cleorit-DB",
+  "ModelMetadata": {
+    "Author": "Cleorit",
+    "DateCreated": "Oct 26, 2021, 04:35 PM",
+    "DateLastModified": "Oct 27, 2021, 06:09 PM",
+    "Description": "DynamoDB database model for Cleorit",
+    "AWSService": "Amazon DynamoDB",
+    "Version": "3.0"
+  },
+  "DataModel": [
+    {
+      "TableName": "Language_Data",
+      "KeyAttributes": {
+        "PartitionKey": {
+          "AttributeName": "PK",
+          "AttributeType": "S"
+        },
+        "SortKey": {
+          "AttributeName": "SK",
+          "AttributeType": "S"
+        }
+      },
+      "NonKeyAttributes": [
+        {
+          "AttributeName": "GSI1PK",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "GSI1SK",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "Sentence",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "User",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "Details",
+          "AttributeType": "M"
+        },
+        {
+          "AttributeName": "Votes",
+          "AttributeType": "N"
+        }
+      ],
+      "GlobalSecondaryIndexes": [
+        {
+          "IndexName": "GSI1",
+          "KeyAttributes": {
+            "PartitionKey": {
+              "AttributeName": "GSI1PK",
+              "AttributeType": "S"
+            },
+            "SortKey": {
+              "AttributeName": "GSI1SK",
+              "AttributeType": "S"
+            }
+          },
+          "Projection": {
+            "ProjectionType": "ALL"
+          }
+        }
+      ],
+      "TableData": [
+        {
+          "PK": {
+            "S": "lang#english"
+          },
+          "SK": {
+            "S": "sid#0001"
+          },
+          "GSI1PK": {
+            "S": "sntc#Are you ok?"
+          },
+          "GSI1SK": {
+            "S": "sntc#Are you ok?"
+          },
+          "Sentence": {
+            "S": "Are you ok?"
+          },
+          "User": {
+            "S": "0000"
+          },
+          "Details": {
+            "M": {
+              "language": "english",
+              "sentenceID": "0001",
+              "createdAt": "26/10/2021"
+            }
+          }
+        },
+        {
+          "PK": {
+            "S": "lang#english;sid#0001"
+          },
+          "SK": {
+            "S": "t!lang#portuguese;user#0001"
+          },
+          "GSI1PK": {
+            "S": "user#0001;lang#english"
+          },
+          "GSI1SK": {
+            "S": "t!lang#portuguese;sid#0001"
+          },
+          "Sentence": {
+            "S": "Você está bem?"
+          },
+          "User": {
+            "S": "0001"
+          },
+          "Details": {
+            "M": {
+              "language": "english",
+              "sentenceID": "0001",
+              "createdAt": "26/10/2021"
+            }
+          },
+          "Votes": {
+            "N": "1"
+          }
+        },
+        {
+          "PK": {
+            "S": "lang#english;sid#0001"
+          },
+          "SK": {
+            "S": "t!lang#japanese;user#0001"
+          },
+          "GSI1PK": {
+            "S": "user#0001;lang#english"
+          },
+          "GSI1SK": {
+            "S": "t!lang#japanese;sid#0001"
+          },
+          "Sentence": {
+            "S": "大丈夫ですか"
+          },
+          "User": {
+            "S": "0001"
+          },
+          "Details": {
+            "M": {
+              "language": "english",
+              "sentenceID": "0001",
+              "createdAt": "26/10/2021"
+            }
+          },
+          "Votes": {
+            "N": "0"
+          }
+        },
+        {
+          "PK": {
+            "S": "user#0001"
+          },
+          "SK": {
+            "S": "user#0001"
+          },
+          "User": {
+            "S": "0001"
+          },
+          "Details": {
+            "M": {
+              "name": "João",
+              "role": "administrator"
+            }
+          }
+        },
+        {
+          "PK": {
+            "S": "user#0002"
+          },
+          "SK": {
+            "S": "user#0002"
+          },
+          "User": {
+            "S": "0002"
+          },
+          "Details": {
+            "M": {
+              "name": "Pedro",
+              "role": "user"
+            }
+          }
+        },
+        {
+          "PK": {
+            "S": "lang#english;sid#0001"
+          },
+          "SK": {
+            "S": "t!lang#portuguese;user#0002"
+          },
+          "GSI1PK": {
+            "S": "user#0002;lang#english"
+          },
+          "GSI1SK": {
+            "S": "t!lang#portuguese;sid#0001"
+          },
+          "Sentence": {
+            "S": "Tá tudo bem?"
+          },
+          "User": {
+            "S": "0002"
+          },
+          "Details": {
+            "M": {
+              "language": "english",
+              "sentenceID": "0001",
+              "createdAt": "26/10/2021"
+            }
+          },
+          "Votes": {
+            "N": "0"
+          }
+        },
+        {
+          "PK": {
+            "S": "lang#english;sid#0001"
+          },
+          "SK": {
+            "S": "v!user#0003"
+          },
+          "User": {
+            "S": "0003"
+          },
+          "Details": {
+            "M": {
+              "translationLanguage": "portuguese",
+              "translationID": "user#0001"
+            }
+          }
+        },
+        {
+          "PK": {
+            "S": "user#0003"
+          },
+          "SK": {
+            "S": "user#0003"
+          },
+          "User": {
+            "S": "0003"
+          },
+          "Details": {
+            "M": {
+              "name": "Carlos",
+              "role": "curator"
+            }
+          }
+        }
+      ],
+      "DataAccess": {
+        "MySql": {}
+      },
+      "BillingMode": "PROVISIONED",
+      "ProvisionedCapacitySettings": {
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": 5,
+          "WriteCapacityUnits": 5
+        },
+        "AutoScalingRead": {
+          "ScalableTargetRequest": {
+            "MinCapacity": 1,
+            "MaxCapacity": 10,
+            "ServiceRole": "AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
+          },
+          "ScalingPolicyConfiguration": {
+            "TargetValue": 70
+          }
+        },
+        "AutoScalingWrite": {
+          "ScalableTargetRequest": {
+            "MinCapacity": 1,
+            "MaxCapacity": 10,
+            "ServiceRole": "AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
+          },
+          "ScalingPolicyConfiguration": {
+            "TargetValue": 70
+          }
+        }
+      }
+    },
+    {
+      "TableName": "Review_Data",
+      "KeyAttributes": {
+        "PartitionKey": {
+          "AttributeName": "PK",
+          "AttributeType": "S"
+        },
+        "SortKey": {
+          "AttributeName": "SK",
+          "AttributeType": "S"
+        }
+      },
+      "NonKeyAttributes": [
+        {
+          "AttributeName": "LSI1",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "Sentence",
+          "AttributeType": "M"
+        },
+        {
+          "AttributeName": "ConsecutiveHits",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "LastUpdate",
+          "AttributeType": "S"
+        }
+      ],
+      "TableData": [
+        {
+          "PK": {
+            "S": "user#0001"
+          },
+          "SK": {
+            "S": "26/10/2021 17:22:00;sid#0001"
+          },
+          "LSI1": {
+            "S": "lang#english;sid#0001"
+          },
+          "Sentence": {
+            "M": {
+              "language": "english",
+              "sentenceID": "0001"
+            }
+          },
+          "ConsecutiveHits": {
+            "S": "2"
+          },
+          "LastUpdate": {
+            "S": "25/10/2021 17:22:00"
+          }
+        }
+      ],
+      "DataAccess": {
+        "MySql": {}
+      },
+      "BillingMode": "PROVISIONED",
+      "ProvisionedCapacitySettings": {
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": 5,
+          "WriteCapacityUnits": 5
+        },
+        "AutoScalingRead": {
+          "ScalableTargetRequest": {
+            "MinCapacity": 1,
+            "MaxCapacity": 10,
+            "ServiceRole": "AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
+          },
+          "ScalingPolicyConfiguration": {
+            "TargetValue": 70
+          }
+        },
+        "AutoScalingWrite": {
+          "ScalableTargetRequest": {
+            "MinCapacity": 1,
+            "MaxCapacity": 10,
+            "ServiceRole": "AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
+          },
+          "ScalingPolicyConfiguration": {
+            "TargetValue": 70
+          }
+        }
+      }
+    }
+  ]
+}
